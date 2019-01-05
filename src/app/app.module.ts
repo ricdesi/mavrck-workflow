@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FlowComponent } from './flow/flow.component';
 import { LabelComponent } from './label/label.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FlowComponent,
-    LabelComponent
+    LabelComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

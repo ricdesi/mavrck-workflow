@@ -1,12 +1,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<nav id="stages">
-  <ul>
-    <li id="stage{{stage.id}}" *ngFor="let stage of data.stages">
-      <a href="#" [ngClass]="{current: stage.id == currentStageId}" (click)="onNavigate(stage.id)">{{ stage.label }}</a>
-    </li>
-  </ul>
-</nav>
+<app-navbar [stages]="data.stages" [currentStageId]="currentStageId" (changeStageId)="onChangeStageId($event)"></app-navbar>
 
 <div id="steps" *ngFor="let stage of data.stages">
   <div *ngIf="stage.id == currentStageId">
