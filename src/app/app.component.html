@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<nav id="stages">
+  <ul>
+    <li id="stage{{stage.id}}" *ngFor="let stage of data.stages">
+      <a href="#" [ngClass]="{current: stage.id == currentStageId}" (click)="onNavigate(stage.id)">{{ stage.label }}</a>
+    </li>
+  </ul>
+</nav>
+
+<div id="steps" *ngFor="let stage of data.stages">
+  <div *ngIf="stage.id == currentStageId">
+    <div id="step{{step.id}}" class="step" *ngFor="let step of stage.steps; let last = last;">
+      <div class="stepDetails">
+        <app-label [step]="step"></app-label>
+        <div class="descriptionContainer">
+          <p class="description" [innerHTML]="decodeMarkdown(step.description)"></p>
+        </div>
+      </div>
+        <app-flow *ngIf="!last"></app-flow>
+    </div>
+  </div>
+</div>

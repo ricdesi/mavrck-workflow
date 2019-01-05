@@ -1,0 +1,116 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+	currentStageId = 7005;
+	data = {
+		"campaignName": "Holiday 2018",
+		"stages": [
+			{
+				"id": 7001,
+				"label": "Invite",
+				"steps": [
+				]
+			},
+			{
+				"id": 7002,
+				"label": "Curate",
+				"steps": [
+				]
+			},
+			{
+				"id": 7003,
+				"label": "Confirm",
+				"steps": [
+				]
+			},
+			{
+				"id": 7004,
+				"label": "Fulfill Initial Incentive",
+				"steps": [
+				]
+			},
+			{
+				"id": 7005,
+				"label": "Wait for Post",
+				"steps": [
+					{
+						"label": "Enter Stage",
+						"id": 8001,
+						"description": "Influencers enter the stage when their *Initial Incentive* is set to *Fulfilled*",
+						"type": "start"
+					},
+					{
+						"label": "Waiting for Post",
+						"id": 8002,
+						"description": "Influencer’s status is set to _Waiting for Post_",
+						"type": "statusUpdate"
+					},
+					{
+						"label": "Product Sent + Posting Instructions",
+						"id": 8003,
+						"description": "Email _Product Sent + Posting Instructions_ is sent *Automatically*",
+						"type": "message",
+						"editable": "true"
+					},
+					{
+						"label": "Post Reminder 1",
+						"id": 8004,
+						"description": "Email _Post Reminder 1_ is sent *Automatically* 5 days _before_ the *Content Due Date* when an influencer's status is _Waiting for Post_",
+						"type": "message",
+						"editable": "true"
+					},
+					{
+						"label": "Post Reminder 2",
+						"id": 8005,
+						"description": "Email _Post Reminder 2_ is sent *Automatically* 1 days _before_ the *Content Due Date* when an influencer's status is _Waiting for Post_",
+						"type": "message",
+						"editable": "true"
+					},
+					{
+						"label": "Post Reminder 3",
+						"id": 8006,
+						"description": "Email _Post Reminder 3_ is sent *Automatically* 1 days _after_ the *Content Due Date* when an influencer's status is _Waiting for Post_",
+						"type": "message",
+						"editable": "true"
+					},
+					{
+						"label": "Exit Stage",
+						"id": 8007,
+						"description": "Influencers exist stage when they complete the *Post Requirements*",
+						"type": "endState"
+					}
+				]
+			},
+			{
+				"id": 7006,
+				"label": "Fulfill Final Incentive",
+				"steps": [
+				]
+			},
+			{
+				"id": 7007,
+				"label": "Complete",
+				"steps": [
+				]
+			}
+		]
+	};
+
+	onNavigate(id) {
+		this.currentStageId = id;
+		console.log(id);
+	}
+
+	decodeMarkdown(encodedText) {
+		let boldDecode = /\*[^\*]*\*/g; // Targets substrings contained between *paired asterisks*
+		let italicDecode = /_[^_]*_/g;  // Targets substrings contained between _paired underscores_
+		return encodedText.replace(boldDecode, match => `<strong>${match.slice(1, -1)}</strong>`)
+						  .replace(italicDecode, match => `<em>${match.slice(1, -1)}</em>`);
+
+	}
+}

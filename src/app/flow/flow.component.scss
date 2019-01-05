@@ -1,0 +1,18 @@
+.flow {
+	width: 40%;
+
+	.flowConnection {
+		width: 1px;
+		height: 30px;
+		background: #909090;
+		margin: 0 auto;
+	}
+
+	.flowPoint {
+		width: 0px;
+		margin: 0 auto;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-top: 10px solid #909090;
+	}
+}

@@ -1,0 +1,9 @@
+<div class="labelContainer">
+	<span class="label" [attr.data-type]="step.type" [attr.data-editable]="step.editable">
+		<i class="type" *ngIf="(step.type != 'start') && (step.type != 'endState')">
+			<i class="material-icons">{{stepTypeIcons[step.type]}}</i>
+		</i>
+		<span class="labelText">{{step.label}}</span>
+		<button class="edit" *ngIf="step.editable"><i class="material-icons">edit</i></button>
+	</span>
+</div>
